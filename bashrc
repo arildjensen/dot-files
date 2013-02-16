@@ -16,3 +16,5 @@ if [[ $EUID == 0 ]] ; then
 else
   PS1="$NORMAL[ $GREEN\u@\h$NORMAL]\$ "
 fi
+
+eval `ssh-agent`
