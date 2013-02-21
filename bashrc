@@ -7,6 +7,7 @@ export GPG_TTY EDITOR TERM LS_COLORS
 
 alias ssh='ssh -A'
 alias ls='ls --color=auto'
+alias e='vim'
 
 NORMAL="\[\e[0m\]"
 RED="\[\e[1;31m\]"
