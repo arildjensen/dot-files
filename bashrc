@@ -11,9 +11,9 @@ alias e='vim'
 
 NORMAL="\[\e[0m\]"
 RED="\[\e[1;31m\]"
-GREEN="\[\e[1;32m\]"
+GREEN="\[\e[0;32m\]"
 if [[ $EUID == 0 ]] ; then
-  PS1="$NORMAL[ $RED\u@\h$NORMAL ]# "
+  PS1=" $RED\u@\h$NORMAL \w # "
 else
-  PS1="$NORMAL[ $GREEN\u@\h$NORMAL]\$ "
+  PS1=" $GREEN\u@\h$NORMAL \w \$ "
 fi
