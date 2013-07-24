@@ -5,10 +5,8 @@
 "## Turn on syntax highlighting
 syntax on
 
-"## Set 256 colors and colorscheme to inkpot
-"   https://github.com/ciaranm/inkpot
 set t_Co=256
-colors inkpot
+colorscheme zellner
 "## For lots of custom colorschemes take a look at:
 "   http://code.google.com/p/vimcolorschemetest/
 
