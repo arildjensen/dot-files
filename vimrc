@@ -17,6 +17,7 @@ Bundle 'puppetlabs/puppet-syntax-vim'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'Syntastic' 
+Bundle 'snipMate'
 filetype plugin indent on
 "#######################################################################
 
