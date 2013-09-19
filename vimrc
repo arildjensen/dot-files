@@ -30,10 +30,21 @@ syntax on
 
 
 "### Set Indentation Options ###########################################
-set expandtab     "Change tab to spaces
-set tabstop=2     "1 tab = 2 spaces
-set shiftwidth=2  "Indent 2 spaces
-set smartindent   "Automatic indentation
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set smartindent
 "#######################################################################
 
 set number
+
+"### Setup mapping function for Norwegian characters ###################
+function! Norchar()
+  %s/.ae/æ/ge
+  %s/.AE/Æ/ge
+  %s/.OE/Ø/ge
+  %s/.aa/å/ge
+  %s/.AA/Å/ge
+endfunction
+nmap <silent> ;n  :call Norchar()<CR>
+"#######################################################################
