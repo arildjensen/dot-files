@@ -30,7 +30,10 @@ syntax on
 
 
 "### Set Indentation Options ###########################################
-set tabstop=2
+set expandtab     "Change tab to spaces
+set tabstop=2     "1 tab = 2 spaces
+set shiftwidth=2  "Indent 2 spaces
+set smartindent   "Automatic indentation
 "#######################################################################
 
 set number
