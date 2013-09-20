@@ -19,7 +19,6 @@ Bundle 'FuzzyFinder'
 Bundle 'Syntastic' 
 Bundle 'snipMate'
 filetype plugin indent on
-"#######################################################################
 
 
 "### Setup Color Scheme ################################################
@@ -27,17 +26,19 @@ colorscheme zellner
 set background=dark
 set t_Co=256
 syntax on
-"#######################################################################
 
 
 "### Set Indentation Options ###########################################
-set tabstop=2
+set tabstop=2 
+set softtabstop=2
+set shiftwidth=2 
 set expandtab
-set shiftwidth=2
-set smartindent
-"#######################################################################
+set smartindent 
 
-set number
+"### Modify Some VIM Features ##########################################
+set number       "Enable line numbers
+set hidden       "Don't complain about modified hidden buffers
+set laststatus=2 "Always display the status line
 
 "### Setup mapping function for Norwegian characters ###################
 function! Norchar()
@@ -47,5 +48,8 @@ function! Norchar()
   %s/.aa/å/ge
   %s/.AA/Å/ge
 endfunction
-nmap <silent> ;n  :call Norchar()<CR>
+
+"### Setup my custom key mappings ######################################
+nmap <silent> ,n  :call Norchar()<CR>
+nmap <silent> ,f  :FufFile<CR>
 "#######################################################################
