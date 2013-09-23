@@ -18,6 +18,7 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'Syntastic' 
 Bundle 'snipMate'
+Bundle 'Raimondi/delimitMate'
 filetype plugin indent on
 
 
@@ -52,4 +53,3 @@ endfunction
 "### Setup my custom key mappings ######################################
 nmap <silent> ,n  :call Norchar()<CR>
 nmap <silent> ,f  :FufFile<CR>
-"#######################################################################
