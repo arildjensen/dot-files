@@ -1,3 +1,5 @@
 [user]
-  name  = Arild Jensen
-  email = ajensen@counter-attack.com
+  name = Arild Jensen
+  email = ajensen@entertainmentpartners.com
+[core]
+	autocrlf = true
