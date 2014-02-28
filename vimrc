@@ -45,6 +45,7 @@ set laststatus=2 "Always display the status line
 function! Norchar()
   %s/.ae/æ/ge
   %s/.AE/Æ/ge
+  %s/.oe/ø/ge
   %s/.OE/Ø/ge
   %s/.aa/å/ge
   %s/.AA/Å/ge
