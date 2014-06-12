@@ -8,7 +8,6 @@ LSCOLORS=$LS_COLORS
 export GPG_TTY EDITOR TERM LS_COLORS LSCOLORS
 
 alias ssh='ssh -Aq'
-alias e='vim'
 
 if [ -x $HOME/bin/vim ]; then
   alias e="$HOME/bin/vim"
@@ -22,17 +21,23 @@ else
   alias ls='ls -G'
 fi
 
+# Work-specific stuff
 if [ -d /usr/local/python-2.7.4/bin ]; then
   export PATH=/usr/local/python-2.7.4/bin:$PATH
+fi
+
+if [ -d /usr/local/rvm/gems/ruby-2.0.0-p247/bin ]; then
+  export PATH=/usr/local/rvm/gems/ruby-2.0.0-p247/bin:$PATH
 fi
 
 if [ ! -d $HOME/logs ]; then
   mkdir $HOME/logs
 fi
 
-# Log output when using tmux
-if [[ $TERM = "screen" ]] && [[ $(ps -p $PPID -o comm=) = "tmux" ]]; then
-  logname="$(date '+%d.%m.%Y_%H:%M:%S').tmux.log"
+# Log output when using tmux. Modified code from:
+# http://jovimo.blogspot.com/2013/03/tmux-screen-logging-workaround.html
+if [[ $(ps -p $PPID -o comm=) = "tmux" ]]; then
+  logname="$(date '+%Y-%m-%dT%H%M%S').tmux.log"
   mkdir $HOME/logs 2> /dev/null
   script -f $HOME/logs/${logname}
   exit
