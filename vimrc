@@ -17,8 +17,12 @@ Bundle 'puppetlabs/puppet-syntax-vim'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'Syntastic' 
-Bundle 'snipMate'
 Bundle 'Raimondi/delimitMate'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'vadv/vim-chef'
+Plugin 'bling/vim-airline'
 filetype plugin indent on
 
 
