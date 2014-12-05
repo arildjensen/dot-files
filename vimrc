@@ -23,6 +23,7 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'vadv/vim-chef'
 Plugin 'bling/vim-airline'
+Plugin 'jamessan/vim-gnupg'
 filetype plugin indent on
 
 
