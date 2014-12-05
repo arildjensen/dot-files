@@ -10,6 +10,10 @@ export GPG_TTY EDITOR TERM LS_COLORS LSCOLORS
 alias ssh='ssh -Aq'
 alias ipsort='sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n' # sort IP addr
 
+if [ -f $HOME/.bash_secrets ]; then
+  source $HOME/.bash_secrets
+fi
+
 if [ -x $HOME/bin/vim ]; then
   alias e="$HOME/bin/vim"
 else
