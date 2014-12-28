@@ -14,4 +14,7 @@ vim:
 	mkdir -p ~/.vim/bundle
 	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	install vimrc ~/.vimrc
-	echo "Run vim and execute ':BundleInsall'"
+	echo "Run vim and execute ':BundleInstall'"
+i3:
+	if [ ! -d ~/.i3 ]; them mkdir ~/.i3; fi
+	install i3config ~/.i3/config
