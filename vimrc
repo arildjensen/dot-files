@@ -48,12 +48,12 @@ set laststatus=2 "Always display the status line
 
 "### Setup mapping function for Norwegian characters ###################
 function! Norchar()
-  %s/.ae/æ/ge
-  %s/.AE/Æ/ge
-  %s/.oe/ø/ge
-  %s/.OE/Ø/ge
-  %s/.aa/å/ge
-  %s/.AA/Å/ge
+  %s/\.ae/æ/ge
+  %s/\.AE/Æ/ge
+  %s/\.oe/ø/ge
+  %s/\.OE/Ø/ge
+  %s/\.aa/å/ge
+  %s/\.AA/Å/ge
 endfunction
 
 "### Setup my custom key mappings ######################################
