@@ -14,8 +14,10 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'puppetlabs/puppet-syntax-vim'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+if v:version >=710
+  Bundle 'L9'
+  Bundle 'FuzzyFinder'
+endif
 Bundle 'Syntastic' 
 Bundle 'Raimondi/delimitMate'
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -23,7 +25,9 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'vadv/vim-chef'
 Plugin 'bling/vim-airline'
-Plugin 'jamessan/vim-gnupg'
+if v:version >= 720 
+  Plugin 'jamessan/vim-gnupg'
+endif
 filetype plugin indent on
 
 
