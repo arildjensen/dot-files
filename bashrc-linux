@@ -10,9 +10,24 @@ export GPG_TTY EDITOR TERM LS_COLORS LSCOLORS
 alias ssh='ssh -Aq'
 alias ipsort='sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n' # sort IP addr
 
-if [ -f $HOME/.work ]; then
-  git config --global user.name "Arild Jensen"
+# Find out if we're at work or not
+work=false
+grep -qi odesk /etc/resolv.conf
+odesk=$?
+grep -qi upwork /etc/resolv.conf
+upwork=$?
+
+if [[ "${odesk}" == 0 || "${upwork}" == 0 ]]; then
+  work=true
+fi
+
+# Configure git
+git config --global core.autocrlf true
+git config --global user.name "Arild Jensen"
+if [ ${work} ]; then
   git config --global user.email arildjensen@upwork.com
+else
+  git config --global user.email ajensen@counter-attack.com
 fi
 
 if [ -f $HOME/.bash_secrets ]; then
