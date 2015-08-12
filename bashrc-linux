@@ -75,3 +75,10 @@ if [[ $EUID == 0 ]] ; then
 else
   PS1=" $GREEN\u@\h$NORMAL \w \$ "
 fi
+
+# Output welcome message
+echo -e "\n### Git global settings ###"
+git config --global -l
+echo -e "\n### SSH loaded keys ###"
+ssh-add -l
+echo -e "\nWelcome to $HOSTNAME!"
