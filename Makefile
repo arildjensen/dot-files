@@ -1,9 +1,8 @@
 SHELL=/bin/bash
+.DEFAULT_GOAL := help
 
-dotgit:
-	if [ -d ~/.git ]; then mv ~/.git ~/.git.orig; fi
-	mkdir ~/.git
-	install git/config ~/.git/config
+help:
+	cat README
 
 dotbash:
 	if [ -f ~/.bashrc ]; then mv ~/.bashrc ~/.bashrc.orig; fi

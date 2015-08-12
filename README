@@ -1,0 +1,5 @@
+Makefile help for https://github.com/arildjensen/dot-files
+
+The following 'make' targets are available:
+ - dotbash : Setup bash dotfiles
+ - dotvim  : Setup ViM dotfiles, incl. bundles
