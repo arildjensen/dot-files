@@ -22,7 +22,7 @@ if [[ "${odesk}" == 0 || "${upwork}" == 0 ]]; then
 fi
 
 # Configure git
-git config --global core.autocrlf true
+git config --global core.autocrlf input
 git config --global user.name "Arild Jensen"
 if [ ${work} ]; then
   git config --global user.email arildjensen@upwork.com
