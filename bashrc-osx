@@ -1,0 +1,53 @@
+# ~/.bashrc : executed by bash(1) for non-login shells.
+
+GPG_TTY='tty'
+EDITOR='vim'
+TERM='xterm-color'
+LS_COLORS='no=00:fi=00:di=01;37:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.flac=01;35:*.mp3=01;35:*.mpc=01;35:*.ogg=01;35:*.wav=01;35';
+LSCOLORS=$LS_COLORS
+export GPG_TTY EDITOR TERM LS_COLORS LSCOLORS
+
+alias ssh='ssh -Aq'
+alias ipsort='sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n' # sort IP addr
+alias ls='gls --color=auto'
+
+# Configure git
+git config --global core.autocrlf input
+git config --global user.name "Arild Jensen"
+git config --global user.email ajensen@counter-attack.com
+
+if [ -f $HOME/.bash_secrets ]; then
+  source $HOME/.bash_secrets
+fi
+
+# Log output when using tmux. Modified code from:
+# http://jovimo.blogspot.com/2013/03/tmux-screen-logging-workaround.html
+if [[ $(ps -p $PPID -o comm=) = "tmux" ]]; then
+  logname="$(date '+%Y-%m-%dT%H%M%S').tmux.log"
+  mkdir $HOME/logs 2> /dev/null
+  script -f $HOME/logs/${logname}
+  exit
+fi
+
+# Hack the hostname. Pretend it's 'batcave' if it's my work laptop
+if [[ "$HOSTNAME" =~ ^Arild(.*)local$ ]]; then
+  machine='batcave'
+else
+  machine=$HOSTNAME
+fi
+
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[0;32m\]"
+if [[ $EUID == 0 ]] ; then
+  PS1=" $RED\u@${machine}$NORMAL \w # "
+else
+  PS1=" $GREEN\u@${machine}$NORMAL \w \$ "
+fi
+
+# Output welcome message
+echo -e "\n### Git global settings ###"
+git config --global -l
+echo -e "\n### SSH loaded keys ###"
+ssh-add -l
+echo -e "\nWelcome to ${machine}!"
