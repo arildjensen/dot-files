@@ -11,6 +11,26 @@ alias ssh='ssh -Aq'
 alias ipsort='sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n' # sort IP addr
 alias ls='gls --color=auto'
 
+# Setup log directory, which we'll use later
+if [ ! -d "${HOME}/logs" ]; then
+  mkdir "${HOME}/logs"
+fi
+
+# Setup GPG agent to manage secret keys
+gpg-agent --daemon \
+          --log-file "${HOME}/logs/gpg-agent.log" \
+          --pinentry-program "/usr/local/bin/pinentry-curses" \
+          --disable-scdaemon \
+          --enable-ssh-support \
+          --write-env-file "${HOME}/.gpg-agent-info"
+
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+fi
+
+
 # Configure git
 git config --global core.autocrlf input
 git config --global user.name "Arild Jensen"
@@ -24,7 +44,6 @@ fi
 # http://jovimo.blogspot.com/2013/03/tmux-screen-logging-workaround.html
 if [[ $(ps -p $PPID -o comm=) = "tmux" ]]; then
   logname="$(date '+%Y-%m-%dT%H%M%S').tmux.log"
-  mkdir $HOME/logs 2> /dev/null
   script -f $HOME/logs/${logname}
   exit
 fi
