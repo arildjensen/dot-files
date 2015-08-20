@@ -19,23 +19,21 @@ fi
 # Setup GPG agent to manage secret keys
 gpg-agent --daemon \
           --log-file "${HOME}/logs/gpg-agent.log" \
-          --pinentry-program "/usr/local/bin/pinentry-curses" \
+          --pinentry-program "/usr/local/bin/pinentry" \
           --disable-scdaemon \
-          --enable-ssh-support \
           --write-env-file "${HOME}/.gpg-agent-info"
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
   . "${HOME}/.gpg-agent-info"
   export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
 fi
-
 
 # Configure git
 git config --global core.autocrlf input
 git config --global user.name "Arild Jensen"
 git config --global user.email ajensen@counter-attack.com
 
+# Read in secrets we don't want in this file or in source control in general.
 if [ -f $HOME/.bash_secrets ]; then
   source $HOME/.bash_secrets
 fi
@@ -55,6 +53,7 @@ else
   machine=$HOSTNAME
 fi
 
+# Configure command prompt.
 NORMAL="\[\e[0m\]"
 RED="\[\e[1;31m\]"
 GREEN="\[\e[0;32m\]"
