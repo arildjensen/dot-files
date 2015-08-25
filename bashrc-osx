@@ -47,6 +47,7 @@ if [[ $(ps -p $PPID -o comm=) = "tmux" ]]; then
 fi
 
 # Hack the hostname. Pretend it's 'batcave' if it's my work laptop
+shopt -s nocasematch
 if [[ "$HOSTNAME" =~ ^Arild(.*)local$ ]]; then
   machine='batcave'
 else
