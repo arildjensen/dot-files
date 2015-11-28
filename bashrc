@@ -13,16 +13,27 @@ export GPG_TTY EDITOR TERM LS_COLORS LSCOLORS PATH
 
 alias ssh='ssh -Aq'
 alias ipsort='sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n' # sort IP addr
+
 if $(which -s gls); then
   alias ls='gls --color=auto'
 else 
   alias ls='ls --color=auto'
 fi
+
 if [ -x $HOME/bin/vim ]; then
   alias e="$HOME/bin/vim"
 else
   alias e='vim'
 fi
+
+#dirsize - finds directory sizes and lists them for the current directory
+dirsize () {
+  du -shx * .[a-zA-Z0-9_]* 2> /dev/null | \
+  egrep '^ *[0-9.]*[MG]' | sort -n > /tmp/$USER.list
+  egrep '^ *[0-9.]*M' /tmp/$USER.list
+  egrep '^ *[0-9.]*G' /tmp/$USER.list
+  rm -rf /tmp/$USER.list
+}
 
 ## LOCATION SPECIFIC LOGIC
 ##########################
