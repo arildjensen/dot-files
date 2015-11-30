@@ -13,7 +13,7 @@ export GPG_TTY EDITOR TERM LS_COLORS PATH
 alias ssh='ssh -Aq'
 alias ipsort='sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n' # sort IP addr
 
-if $(which -s gls); then
+if $(which gls > /dev/null 2>&1); then
   alias ls='gls --color=auto'
 else 
   alias ls='ls --color=auto'
@@ -63,7 +63,7 @@ if [ -f $HOME/.bash_secrets ]; then
 fi
 
 # Setup GPG agent to manage secret keys
-if $(which -s gpg-agent); then
+if $(which gpg-agent > /dev/null 2>&1); then
   gpg-agent --daemon \
             --log-file "$HOME/logs/gpg-agent.log" \
             --pinentry-program "/usr/local/bin/pinentry" \
