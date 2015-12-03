@@ -1,65 +1,72 @@
-"### Arild Jensen's vimrc file #########################################
-"
-"    https://github.com/arildjensen/dot-files
-"
-"#######################################################################
+" ##############################################################################
+" # vimrc by Arild Jensen ajensen@counter-attack.com
+" # https://github.com/arildjensen/dot-files/blob/master/vimrc
+" ##############################################################################
 
+" ### Vundle ###
+" # Note, initially you have to run 'git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set nocompatible
-filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-"### Setup Vundle ######################################################
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'puppetlabs/puppet-syntax-vim'
-if v:version >=710
-  Bundle 'L9'
-  Bundle 'FuzzyFinder'
-endif
-Bundle 'Syntastic' 
-Bundle 'Raimondi/delimitMate'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'vadv/vim-chef'
+Plugin 'wincent/Command-T'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'bling/vim-airline'
-if v:version >= 720 
-  Plugin 'jamessan/vim-gnupg'
-endif
-filetype plugin indent on
+Plugin 'jamessan/vim-gnupg'
+Bundle 'Syntastic'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Valloric/YouCompleteMe'
 
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "vadv/vim-chef"
 
-"### Setup Color Scheme ################################################
-colorscheme zellner
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" ### END Vundle ###
+
+" ### vim-chef ###
+autocmd FileType ruby,eruby set filetype=ruby.eruby.chef
+" ### END vim-chef ###
+
+" ### Color scheme ###
+colorscheme jellybeans
 set background=dark
 set t_Co=256
 syntax on
+" ### END Color scheme ###
 
-
-"### Set Indentation Options ###########################################
-set tabstop=2 
+" ### Indentation Options ###
+set tabstop=2
 set softtabstop=2
-set shiftwidth=2 
+set shiftwidth=2
 set expandtab
-set smartindent 
+set smartindent
+" ### END Indentation Options ###
 
-"### Modify Some VIM Features ##########################################
-set number       "Enable line numbers
-set hidden       "Don't complain about modified hidden buffers
-set laststatus=2 "Always display the status line
-
-"### Setup mapping function for Norwegian characters ###################
-function! Norchar()
-  %s/\.ae/æ/ge
-  %s/\.AE/Æ/ge
-  %s/\.oe/ø/ge
-  %s/\.OE/Ø/ge
-  %s/\.aa/å/ge
-  %s/\.AA/Å/ge
-endfunction
-
-"### Setup my custom key mappings ######################################
-nmap <silent> ,n  :call Norchar()<CR>
-nmap <silent> ,f  :FufFile<CR>
+" ### Miscellaneous Options ###
+set number        "Enable line numbers
+set hidden        "Don't complain about modified hidden buffers
+set laststatus=2  "Always display the status line
+" ### END Miscellaneous Options ###
