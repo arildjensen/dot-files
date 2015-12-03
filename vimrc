@@ -23,7 +23,6 @@ Bundle 'Syntastic'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Valloric/YouCompleteMe'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -70,3 +69,4 @@ set number        "Enable line numbers
 set hidden        "Don't complain about modified hidden buffers
 set laststatus=2  "Always display the status line
 " ### END Miscellaneous Options ###
+
