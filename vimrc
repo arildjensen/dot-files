@@ -49,6 +49,12 @@ filetype plugin indent on    " required
 autocmd FileType ruby,eruby set filetype=ruby.eruby.chef
 " ### END vim-chef ###
 
+" ### vim-indent-guides ###
+set ts=2 sw=2 et
+let g:indent_guides_start_level=2
+let g:indent_guides_enable_on_vim_startup=1
+" ### END vim-indent-guides ###
+
 " ### Color scheme ###
 colorscheme jellybeans
 set background=dark
